@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from 'next/link';
+import { AppProvider } from "./contexto/AppContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,13 +31,15 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
 
-      <Link href="/">Botón Home</Link>
-      <Link href="/uno"> Botón Uno</Link>
-      <Link href="/dos"> Botón Dos</Link>
+        <Link href="/">Botón Home, raiz o index</Link>
+        <Link href="/uno">Botón Uno</Link>
+        <Link href="/dos">Botón Dos</Link>
 
-        
-        {children}
-        </body>
+        <AppProvider>
+          {children}
+        </AppProvider>
+      
+      </body>
     </html>
   );
 }
